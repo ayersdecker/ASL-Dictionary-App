@@ -1,15 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:SMARTSign.Models"
              x:Class="SMARTSign.MainPage">
 
-    <Grid>
+    <Grid BackgroundColor="#333">
         <Grid.RowDefinitions>
+            <!-- Title Row -->
+            <RowDefinition Height="90"/>
+            <!-- Content Area -->
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <!-- Action Area -->
+            <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        
-    </Grid>
 
+        <Border Grid.Row="0" BackgroundColor="#00333333" Stroke="#80FFFFFF" StrokeThickness="3" VerticalOptions="End" HeightRequest="75">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <Grid Margin="20,10" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="SMARTSign Dictionary" Grid.Column="0" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold" Opacity=".8"/>
+                <ImageButton Source="hamburger" Grid.Column="1" VerticalOptions="Center" Scale=".75" Opacity=".8"/>
+            </Grid>
+        </Border>
+       
+        <CollectionView x:Name="ImageCards" Grid.Row="1" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:ImageCardModel">
+                    <Border Stroke="#80FFFFFF" BackgroundColor="#00000000" Margin="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                    <Grid HorizontalOptions="Fill" Margin="10" HeightRequest="200">
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="5"/>
+                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Path=Name}" TextColor="#80FFFFFF"/>
+                            <ImageButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding Path=ImageSource}" Clicked="Image_Clicked"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Border Grid.Row="2" BackgroundColor="#00333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <Grid Margin="20,10" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Entry/>
+                <ImageButton Source="arrow" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8"/>
+            </Grid>
+        </Border>
+
+
+
+
+
+
+
+
+    </Grid>
 </ContentPage>

@@ -49,6 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\arrow.png" />
+	  <None Remove="Resources\Images\hamburger.png" />
+	  <None Remove="Resources\Images\more.png" />
+	  <None Remove="Resources\Images\running.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
