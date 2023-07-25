@@ -11,20 +11,19 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-		LoadCardTesting();
+		LoadCollection();
+		LoadCardSource();
 	}
 
-	public void LoadCardTesting()
+	public void LoadCardSource()
 	{
-
-
-
-
-
-		ImageCardModel card = new ImageCardModel("Running", "ytidhere", "running.png");
-		for(int i = 0; i < 10; i++) { Cards.Add(card); }
 		ImageCards.ItemsSource = Cards;
 	}
+	private void LoadCollection()
+	{
+        ImageCardModel card = new ImageCardModel("Running", "_HZM0QiuUS8", "running.png", 270, false);
+        for (int i = 0; i < 10; i++) { Cards.Add(card); }
+    }
 
     private void ImageCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -35,20 +34,12 @@ public partial class MainPage : ContentPage
     {
 
     }
-	private async Task<dynamic> GetVideo()
-	{
-        string url = "https://www.googleapis.com/youtube/v3/ ";
 
-        // Build and Connect to OpenWeather API
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion");
-        HttpResponseMessage response = await client.GetAsync(url);
-        response.EnsureSuccessStatusCode();
-
-        // Get JSON Data
-        string content = await response.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<dynamic>(content);
-        
+    private void ImageButton_Clicked(object sender, EventArgs e)
+    {
+		ImageButton button = (ImageButton)sender;
+		var context = button.BindingContext as ImageCardModel;
+		foreach (ImageCardModel card in Cards) {if(card == context){ card.IsImage = false; }}
     }
 }
 

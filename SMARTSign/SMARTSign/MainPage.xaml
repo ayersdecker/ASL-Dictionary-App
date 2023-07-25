@@ -36,24 +36,26 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
-
-                        <WebView HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill">
-                            <WebView.Source>
-                                <HtmlWebViewSource>
-                                    <HtmlWebViewSource.Html>
-                                        <![CDATA[
-                                        <HTML>
+                        <VerticalStackLayout>
+                            <ImageButton x:Name="ImageButton" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" Scale=".8" Source="running" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
+                            <WebView x:Name="WebView" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="true">
+                                <WebView.Source>
+                                    <HtmlWebViewSource>
+                                        <HtmlWebViewSource.Html>
+                                            <![CDATA[
+                                            <HTML>
                                             <BODY style="background-color:gray;">
                                                 <iframe width="375" height="250" type “align=center”
-                                                    src="https://www.youtube.com/embed/iXZIuL6PmY0?&autoplay=1"frameborder="0"
+                                                    src="https://www.youtube.com/embed/L-4a6BcpZL8?&autoplay=0"frameborder="0"
                                                     allowfullscreen></iframe>
                                             </BODY>
-                                        </HTML>
-                                        ]]>
-                                    </HtmlWebViewSource.Html>
-                                </HtmlWebViewSource>
-                            </WebView.Source>
-                        </WebView>
+                                            </HTML>
+                                            ]]>
+                                        </HtmlWebViewSource.Html>
+                                    </HtmlWebViewSource>
+                                </WebView.Source>
+                            </WebView>
+                        </VerticalStackLayout>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
