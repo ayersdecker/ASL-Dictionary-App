@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:SMARTSign.Models"
+             xmlns:tool="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="SMARTSign.MainPage">
 
     <Grid BackgroundColor="#333">
@@ -35,21 +36,24 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
-                    <Grid HorizontalOptions="Fill" Margin="10" HeightRequest="200">
-                        <Grid.RowDefinitions>
-                                <RowDefinition Height="5"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition/>
-                                <RowDefinition Height="5"/>
-                        </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Path=Name}" TextColor="#80FFFFFF"/>
-                            <ImageButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding Path=ImageSource}" Clicked="Image_Clicked"/>
-                        </Grid>
+                        <WebView HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <WebView.Source>
+                                <HtmlWebViewSource>
+                                    <HtmlWebViewSource.Html>
+                                        <![CDATA[
+                                        <HTML>
+                                            <BODY style="background-color:gray;">
+                                                <iframe width="375" height="250" type “align=center”
+                                                    src="https://www.youtube.com/embed/iXZIuL6PmY0?&autoplay=1"frameborder="0"
+                                                    allowfullscreen></iframe>
+                                            </BODY>
+                                        </HTML>
+                                        ]]>
+                                    </HtmlWebViewSource.Html>
+                                </HtmlWebViewSource>
+                            </WebView.Source>
+                        </WebView>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
