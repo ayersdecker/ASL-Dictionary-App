@@ -16,7 +16,7 @@ namespace SMARTSign.Models
         public bool IsImage { get; set; }
         public int BHeight { get; set; }
 
-        public string VideoSource { get { return VideoPath(); } }
+        public HtmlWebViewSource VideoSource { get { return VideoPath(); } }
         public ImageCardModel(string name, string yTID, string imageSource, int bHeight, bool isImage)
         {
             Name = name;
@@ -25,9 +25,11 @@ namespace SMARTSign.Models
             BHeight = 270;
             IsImage = isImage;
         }
-        public string VideoPath()
+        public HtmlWebViewSource VideoPath()
         {
-            return $"https://www.youtube.com/watch?{YTID}";
+            HtmlWebViewSource hal = new HtmlWebViewSource();
+            hal.Html = $"<iframe width=\"375\" height=\"250\" src=\"https://www.youtube.com/embed/{YTID}&autoplay=0\" frameborder=\"0\" allowfullscreen></iframe>";
+            return hal;
         }
     }
 }

@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
 	}
 	private void LoadCollection()
 	{
-        ImageCardModel card = new ImageCardModel("Running", "_HZM0QiuUS8", "running.png", 270, false);
+        ImageCardModel card = new ImageCardModel("Running", "L-4a6BcpZL8", "running.png", 270, false);
         for (int i = 0; i < 10; i++) { Cards.Add(card); }
     }
 
@@ -35,11 +35,12 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void ImageButton_Clicked(object sender, EventArgs e)
-    {
+	private void ImageButton_Clicked(object sender, EventArgs e)
+	{
 		ImageButton button = (ImageButton)sender;
 		var context = button.BindingContext as ImageCardModel;
-		foreach (ImageCardModel card in Cards) {if(card == context){ card.IsImage = false; }}
-    }
+		foreach (ImageCardModel card in Cards) { if (card == context) { card.IsImage = false; } }
+
+	}
 }
 
