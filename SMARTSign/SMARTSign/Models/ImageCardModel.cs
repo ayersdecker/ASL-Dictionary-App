@@ -28,7 +28,7 @@ namespace SMARTSign.Models
         public HtmlWebViewSource VideoPath()
         {
             HtmlWebViewSource hal = new HtmlWebViewSource();
-            hal.Html = $"<iframe width=\"375\" height=\"250\" src=\"https://www.youtube.com/embed/{YTID}&autoplay=0\" frameborder=\"0\" allowfullscreen></iframe>";
+            hal.Html = $"<iframe width=\"375\" height=\"250\" src=\"https://www.youtube.com/embed/{YTID}&autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>";
             return hal;
         }
     }
