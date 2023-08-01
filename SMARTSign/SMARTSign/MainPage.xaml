@@ -55,8 +55,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <Entry/>
-                <ImageButton Source="arrow" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8"/>
+                <Entry x:Name="Search"/>
+                <ImageButton x:Name="Submit" Source="arrow" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
 
