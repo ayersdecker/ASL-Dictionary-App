@@ -12,12 +12,9 @@ public partial class MainPage : ContentPage
 {
 	public ObservableCollection<ImageCardModel> Cards = new();
 
-    // Replace 'YOUR_API_KEY' with your actual YouTube Data API key
-    string apiKey = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
-    // Replace 'CHANNEL_ID' with the ID of the specific channel you want to search within
+    string boor = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
-    // Replace 'SEARCH_QUERY' with your search query (optional)
-    string searchQuery = "Running";
+    string searchQuery = "";
 
     
     
@@ -41,7 +38,7 @@ public partial class MainPage : ContentPage
         //ImageCardModel card = new ImageCardModel("Running", "L-4a6BcpZL8", "running.png", 270, false);
         //for (int i = 0; i < 10; i++) { Cards.Add(card); }
 
-        List<string> videoIds = GetVideoIds(apiKey, channelId, searchQuery);
+        List<string> videoIds = GetVideoIds(boor, channelId, searchQuery);
         foreach (string videoId in videoIds)
         {
             ImageCardModel card = new ImageCardModel("Running", videoId, "running.png", 270, false);
@@ -91,6 +88,7 @@ public partial class MainPage : ContentPage
         foreach (var searchResult in searchListResponse.Items)
         {
             videoIds.Add(searchResult.Id.VideoId);
+           // searchResult.Snippet.Thumbnails.Default__
         }   
 
         return videoIds;
