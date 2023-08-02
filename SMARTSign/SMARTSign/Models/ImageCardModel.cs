@@ -9,7 +9,8 @@ namespace SMARTSign.Models
 {
     public class ImageCardModel
     {
-        public string Name { get; set; }
+        private string name;
+        public string Name { get { return name; } set { name = char.ToUpper(value[0]) + value.Substring(1); }}
         public string YTID { get; set; }
         public string ImageSource { get; set; }
         public bool IsVideo { get { return !IsImage; } }
@@ -17,9 +18,9 @@ namespace SMARTSign.Models
         public int BHeight { get; set; }
 
         public HtmlWebViewSource VideoSource { get { return VideoPath(); } }
-        public ImageCardModel(string name, string yTID, string imageSource, int bHeight, bool isImage)
+        public ImageCardModel(string _name, string yTID, string imageSource, int bHeight, bool isImage)
         {
-            Name = name;
+            Name = _name;
             YTID = yTID;
             ImageSource = imageSource;
             BHeight = 270;

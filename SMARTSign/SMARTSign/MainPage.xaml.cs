@@ -10,7 +10,7 @@ namespace SMARTSign;
 
 public partial class MainPage : ContentPage
 {
-	public ObservableCollection<ImageCardModel> Cards = new();
+    public ObservableCollection<ImageCardModel> Cards { get; set; } = new ObservableCollection<ImageCardModel>();
 
     string boor = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
@@ -22,6 +22,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
+        ImageCards.BindingContext = this;
         Search.Text = searchQuery;
         LoadCollection();
         LoadCardSource();
@@ -38,10 +39,10 @@ public partial class MainPage : ContentPage
         //ImageCardModel card = new ImageCardModel("Running", "L-4a6BcpZL8", "running.png", 270, false);
         //for (int i = 0; i < 10; i++) { Cards.Add(card); }
 
-        List<string> videoIds = GetVideoIds(boor, channelId, searchQuery);
-        foreach (string videoId in videoIds)
+        List<YouTubeInfoModel> videoList = GetVideoIds(boor, channelId, searchQuery);
+        foreach (YouTubeInfoModel video in videoList)
         {
-            ImageCardModel card = new ImageCardModel("Running", videoId, "running.png", 270, true);
+            ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, true);
             Cards.Add(card);
         }
     }
@@ -52,20 +53,22 @@ public partial class MainPage : ContentPage
     }
 
     private void Image_Clicked(object sender, EventArgs e)
-    {
+    { 
+        Refresh.IsRefreshing = true;
         LoadCollection();
         LoadCardSource();
+        Refresh.IsRefreshing = false;
     }
 
 	private void ImageButton_Clicked(object sender, EventArgs e)
 	{
 		ImageButton button = (ImageButton)sender;
 		var context = button.BindingContext as ImageCardModel;
-		foreach (ImageCardModel card in Cards) { if (card == context) { card.IsImage = false; } }
-
+        context.IsImage = false;
+        LoadCardSource();
 	}
 
-    public static List<string> GetVideoIds(string apiKey, string channelId, string searchQuery = "")
+    public static List<YouTubeInfoModel> GetVideoIds(string apiKey, string channelId, string searchQuery = "")
     {
         // Create a YouTube Data API service
         var youtubeService = new YouTubeService(new BaseClientService.Initializer()
@@ -84,10 +87,10 @@ public partial class MainPage : ContentPage
         SearchListResponse searchListResponse = searchListRequest.Execute();
 
         // Extract VideoIDs from the API response
-        List<string> videoIds = new List<string>();
+        List<YouTubeInfoModel> videoIds = new List<YouTubeInfoModel>();
         foreach (var searchResult in searchListResponse.Items)
         {
-            videoIds.Add(searchResult.Id.VideoId);
+            videoIds.Add(new YouTubeInfoModel( searchResult.Snippet.Title, searchResult.Snippet.Thumbnails.Medium.Url, searchResult.Id.VideoId));
            // searchResult.Snippet.Thumbnails.Default__
         }   
 
@@ -109,6 +112,13 @@ public partial class MainPage : ContentPage
         ImageCards.ItemsSource = Cards;
         SearchBar.IsVisible = true;
         
+    }
+
+    private void Refresh_Refreshing(object sender, EventArgs e)
+    {
+        LoadCollection();
+        LoadCardSource();
+        Refresh.IsRefreshing = false;
     }
 }
 

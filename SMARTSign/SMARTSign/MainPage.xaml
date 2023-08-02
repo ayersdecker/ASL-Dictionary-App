@@ -28,13 +28,13 @@
                 <ImageButton x:Name="SearchIcon" Source="search" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8" Clicked="SearchIcon_Clicked" IsVisible="false"/>
             </Grid>
         </Border>
-       
-        <CollectionView x:Name="ImageCards" Grid.Row="1" Grid.RowSpan="2" HorizontalOptions="Center">
-            <CollectionView.EmptyView>
-                <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
-                    <Image Source="image" Scale=".5" Opacity=".8"/>
-                    <Label Text="Search a term and photos will appear here," HorizontalOptions="Center"/>
-                    <Label Text="then click a photo to see the ASL Sign" HorizontalOptions="Center"/>
+        <RefreshView x:Name="Refresh" Grid.Row="1" Grid.RowSpan="2" Refreshing="Refresh_Refreshing">
+            <CollectionView x:Name="ImageCards" HorizontalOptions="Center">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
+                        <Image Source="image" Scale=".5" Opacity=".8"/>
+                        <Label Text="Search a term and photos will appear here," HorizontalOptions="Center"/>
+                        <Label Text="then click a photo to see the ASL Sign" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
@@ -43,15 +43,16 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
-                        <VerticalStackLayout HorizontalOptions="Center">
-                            <ImageButton x:Name="ImageButton" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" Scale=".8" Source="running" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
-                            <WebView x:Name="WebView" HeightRequest="270" HorizontalOptions="Center" VerticalOptions="Fill" IsVisible="true" Source="{Binding VideoSource}" BackgroundColor="#333"/>
-
-                        </VerticalStackLayout>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            <VerticalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding Name}" FontSize="Small" Margin="10,10,0,0" FontAttributes="Bold"/>
+                                <ImageButton x:Name="ImageButton" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" Scale=".8" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
+                                <WebView x:Name="WebView" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding IsVideo}" Source="{Binding VideoSource}" BackgroundColor="#333"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
 
         <Border Grid.Row="2" BackgroundColor="#333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3" x:Name="SearchBar">
             <Border.StrokeShape>
