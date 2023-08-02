@@ -31,7 +31,7 @@ namespace SMARTSign.Models
             string iframeHtml = $@"
                 <html>
                     <body>
-                        <iframe width='375' height='250' src='https://www.youtube.com/embed/{YTID}' frameborder='0' allowfullscreen></iframe>
+                        <iframe width='370' height='250' src='https://www.youtube.com/embed/{YTID}' frameborder='0'></iframe>
                     </body>
                 </html>";
             hal.Html = iframeHtml;

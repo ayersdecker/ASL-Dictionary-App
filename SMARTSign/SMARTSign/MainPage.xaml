@@ -25,20 +25,27 @@
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="SMARTSign Dictionary" Grid.Column="0" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold" Opacity=".8"/>
-                <ImageButton Source="hamburger" Grid.Column="1" VerticalOptions="Center" Scale=".75" Opacity=".8"/>
+                <ImageButton x:Name="SearchIcon" Source="search" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8" Clicked="SearchIcon_Clicked" IsVisible="false"/>
             </Grid>
         </Border>
        
-        <CollectionView x:Name="ImageCards" Grid.Row="1" >
+        <CollectionView x:Name="ImageCards" Grid.Row="1" Grid.RowSpan="2" HorizontalOptions="Center">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
+                    <Image Source="image" Scale=".5" Opacity=".8"/>
+                    <Label Text="Search a term and photos will appear here," HorizontalOptions="Center"/>
+                    <Label Text="then click a photo to see the ASL Sign" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:ImageCardModel">
-                    <Border Stroke="#80FFFFFF" BackgroundColor="#00000000" Margin="10">
+                    <Border Stroke="#80333333" BackgroundColor="#00000000" Margin="10" HorizontalOptions="Center">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
-                        <VerticalStackLayout>
+                        <VerticalStackLayout HorizontalOptions="Center">
                             <ImageButton x:Name="ImageButton" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" Scale=".8" Source="running" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
-                            <WebView x:Name="WebView" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="true" Source="{Binding VideoSource}"/>
+                            <WebView x:Name="WebView" HeightRequest="270" HorizontalOptions="Center" VerticalOptions="Fill" IsVisible="true" Source="{Binding VideoSource}" BackgroundColor="#333"/>
 
                         </VerticalStackLayout>
                     </Border>
@@ -46,7 +53,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Border Grid.Row="2" BackgroundColor="#00333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3">
+        <Border Grid.Row="2" BackgroundColor="#333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3" x:Name="SearchBar">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
@@ -55,8 +62,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <Entry x:Name="Search"/>
-                <ImageButton x:Name="Submit" Source="arrow" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
+                <Entry x:Name="Search" FontAttributes="Bold" FontSize="Medium" TextColor="#ddd"/>
+                <ImageButton x:Name="Submit" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
 

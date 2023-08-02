@@ -51,8 +51,10 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\arrow.png" />
 	  <None Remove="Resources\Images\hamburger.png" />
+	  <None Remove="Resources\Images\image.png" />
 	  <None Remove="Resources\Images\more.png" />
 	  <None Remove="Resources\Images\running.png" />
+	  <None Remove="Resources\Images\search.png" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
 
     string boor = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
-    string searchQuery = "";
+    string searchQuery = "Alphabet";
 
     
     
@@ -22,9 +22,9 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-		
-        
-        
+        Search.Text = searchQuery;
+        LoadCollection();
+        LoadCardSource();
 	}
 
 	public void LoadCardSource()
@@ -41,7 +41,7 @@ public partial class MainPage : ContentPage
         List<string> videoIds = GetVideoIds(boor, channelId, searchQuery);
         foreach (string videoId in videoIds)
         {
-            ImageCardModel card = new ImageCardModel("Running", videoId, "running.png", 270, false);
+            ImageCardModel card = new ImageCardModel("Running", videoId, "running.png", 270, true);
             Cards.Add(card);
         }
     }
@@ -96,8 +96,19 @@ public partial class MainPage : ContentPage
 
     private void Submit_Clicked(object sender, EventArgs e)
     {
+        SearchBar.IsVisible = false;
         LoadCollection();
         LoadCardSource();
+        SearchIcon.IsVisible = true;
+    }
+
+    private void SearchIcon_Clicked(object sender, EventArgs e)
+    {
+        SearchIcon.IsVisible = false;
+        Cards.Clear();
+        ImageCards.ItemsSource = Cards;
+        SearchBar.IsVisible = true;
+        
     }
 }
 
