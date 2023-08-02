@@ -11,13 +11,9 @@ namespace SMARTSign;
 public partial class MainPage : ContentPage
 {
     public ObservableCollection<ImageCardModel> Cards { get; set; } = new ObservableCollection<ImageCardModel>();
-
     string boor = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
     string searchQuery = "Alphabet";
-
-    
-    
 
 	public MainPage()
 	{
@@ -27,7 +23,6 @@ public partial class MainPage : ContentPage
         LoadCollection();
         LoadCardSource();
 	}
-
 	public void LoadCardSource()
 	{
 		ImageCards.ItemsSource = Cards;
@@ -46,12 +41,10 @@ public partial class MainPage : ContentPage
             Cards.Add(card);
         }
     }
-
     private void ImageCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
 
     }
-
     private void Image_Clicked(object sender, EventArgs e)
     { 
         Refresh.IsRefreshing = true;
@@ -59,7 +52,6 @@ public partial class MainPage : ContentPage
         LoadCardSource();
         Refresh.IsRefreshing = false;
     }
-
 	private void ImageButton_Clicked(object sender, EventArgs e)
 	{
 		ImageButton button = (ImageButton)sender;
@@ -67,7 +59,6 @@ public partial class MainPage : ContentPage
         context.IsImage = false;
         LoadCardSource();
 	}
-
     public static List<YouTubeInfoModel> GetVideoIds(string apiKey, string channelId, string searchQuery = "")
     {
         // Create a YouTube Data API service
@@ -96,7 +87,6 @@ public partial class MainPage : ContentPage
 
         return videoIds;
     }
-
     private void Submit_Clicked(object sender, EventArgs e)
     {
         SearchBar.IsVisible = false;
@@ -104,7 +94,6 @@ public partial class MainPage : ContentPage
         LoadCardSource();
         SearchIcon.IsVisible = true;
     }
-
     private void SearchIcon_Clicked(object sender, EventArgs e)
     {
         SearchIcon.IsVisible = false;
@@ -113,7 +102,6 @@ public partial class MainPage : ContentPage
         SearchBar.IsVisible = true;
         
     }
-
     private void Refresh_Refreshing(object sender, EventArgs e)
     {
         LoadCollection();

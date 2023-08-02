@@ -28,7 +28,8 @@
                 <ImageButton x:Name="SearchIcon" Source="search" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8" Clicked="SearchIcon_Clicked" IsVisible="false"/>
             </Grid>
         </Border>
-        <RefreshView x:Name="Refresh" Grid.Row="1" Grid.RowSpan="2" Refreshing="Refresh_Refreshing">
+        
+        <RefreshView Grid.Row="1" x:Name="Refresh" Grid.RowSpan="2" Refreshing="Refresh_Refreshing">
             <CollectionView x:Name="ImageCards" HorizontalOptions="Center">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
@@ -67,13 +68,6 @@
                 <ImageButton x:Name="Submit" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
-
-
-
-
-
-
-
-
+        
     </Grid>
 </ContentPage>
