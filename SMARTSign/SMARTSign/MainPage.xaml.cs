@@ -37,7 +37,7 @@ public partial class MainPage : ContentPage
         List<YouTubeInfoModel> videoList = GetVideoIds(boor, channelId, searchQuery);
         foreach (YouTubeInfoModel video in videoList)
         {
-            ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, false);
+            ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, true);
             Cards.Add(card);
         }
     }
