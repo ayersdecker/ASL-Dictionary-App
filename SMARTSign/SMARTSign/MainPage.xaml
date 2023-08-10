@@ -24,8 +24,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="SMARTSign Dictionary" Grid.Column="0" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold" Opacity=".8"/>
-                <ImageButton x:Name="SearchIcon" Source="search" Grid.Column="1" VerticalOptions="Center" Scale=".5" Opacity=".8" Clicked="SearchIcon_Clicked" IsVisible="false"/>
+                <Entry x:Name="SearchField" FontAttributes="Bold" FontSize="Medium" TextColor="#ddd"/>
+                <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
         
@@ -55,7 +55,7 @@
             </CollectionView>
         </RefreshView>
 
-        <Border Grid.Row="2" BackgroundColor="#333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3" x:Name="SearchBar">
+        <Border Grid.Row="2" IsVisible="false" BackgroundColor="#333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3" x:Name="SearchBar">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>

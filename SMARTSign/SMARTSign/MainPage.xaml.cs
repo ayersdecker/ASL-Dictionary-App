@@ -19,7 +19,7 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         ImageCards.BindingContext = this;
-        Search.Text = searchQuery;
+        SearchField.Text = searchQuery;
         LoadCollection();
         LoadCardSource();
 	}
@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
 	private void LoadCollection()
 	{
         Cards.Clear();
-        searchQuery = Search.Text;
+        searchQuery = SearchField.Text;
         //ImageCardModel card = new ImageCardModel("Running", "L-4a6BcpZL8", "running.png", 270, false);
         //for (int i = 0; i < 10; i++) { Cards.Add(card); }
 
@@ -40,10 +40,6 @@ public partial class MainPage : ContentPage
             ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, false);
             Cards.Add(card);
         }
-    }
-    private void ImageCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-
     }
     private void Image_Clicked(object sender, EventArgs e)
     { 
@@ -89,17 +85,13 @@ public partial class MainPage : ContentPage
     }
     private void Submit_Clicked(object sender, EventArgs e)
     {
-        SearchBar.IsVisible = false;
         LoadCollection();
         LoadCardSource();
-        SearchIcon.IsVisible = true;
     }
     private void SearchIcon_Clicked(object sender, EventArgs e)
     {
-        SearchIcon.IsVisible = false;
         Cards.Clear();
         ImageCards.ItemsSource = Cards;
-        SearchBar.IsVisible = true;
         
     }
     private void Refresh_Refreshing(object sender, EventArgs e)
