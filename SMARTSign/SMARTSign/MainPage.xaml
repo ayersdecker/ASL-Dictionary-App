@@ -30,7 +30,7 @@
         </Border>
         
         <RefreshView Grid.Row="1" x:Name="Refresh" Grid.RowSpan="2" Refreshing="Refresh_Refreshing">
-            <CollectionView x:Name="ImageCards" HorizontalOptions="Center">
+            <CollectionView x:Name="ImageCards">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
                         <Image Source="image" Scale=".5" Opacity=".8"/>
@@ -40,15 +40,15 @@
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:ImageCardModel">
-                    <Border Stroke="#80333333" BackgroundColor="#00000000" Margin="10" HorizontalOptions="Center">
+                    <Border Stroke="#80333333" BackgroundColor="#00000000" Margin="0" HorizontalOptions="Center">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
+                            <RoundRectangle CornerRadius="5"/>
                         </Border.StrokeShape>
-                            <VerticalStackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding Name}" FontSize="Small" Margin="10,10,0,0" FontAttributes="Bold"/>
-                                <ImageButton x:Name="ImageButton" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" Scale=".8" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
-                                <WebView x:Name="WebView" HeightRequest="270" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding IsVideo}" Source="{Binding VideoSource}" BackgroundColor="#333"/>
-                            </VerticalStackLayout>
+                            <Grid HorizontalOptions="Fill">
+                                <Label Text="{Binding Name}" FontSize="Small" Margin="0,0,0,0" FontAttributes="Bold" IsVisible="false"/>
+                                <ImageButton x:Name="ImageButton" HeightRequest="250" CornerRadius="10" Scale=".8" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
+                                <WebView x:Name="WebView" Margin="10,0,0,0" HeightRequest="250" IsVisible="{Binding IsVideo}" Source="{Binding VideoSource}" BackgroundColor="#333"/>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

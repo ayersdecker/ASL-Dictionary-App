@@ -10,7 +10,7 @@ namespace SMARTSign;
 
 public partial class MainPage : ContentPage
 {
-    public ObservableCollection<ImageCardModel> Cards { get; set; } = new ObservableCollection<ImageCardModel>();
+    public ObservableCollection<ImageCardModel> Cards { get; } = new();
     string boor = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
     string searchQuery = "Alphabet";
@@ -37,8 +37,12 @@ public partial class MainPage : ContentPage
         List<YouTubeInfoModel> videoList = GetVideoIds(boor, channelId, searchQuery);
         foreach (YouTubeInfoModel video in videoList)
         {
-            ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, true);
-            Cards.Add(card);
+            if(Cards.Count < 10)
+            {
+                ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, true);
+                Cards.Add(card);
+            }
+            
         }
     }
     private void Image_Clicked(object sender, EventArgs e)
