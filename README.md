@@ -14,6 +14,19 @@ Uses data from the ASL Dictionary YouTube Channel
 
 The new application aims to replicate the work done on the original site along with an updated search function 
 
+## Implementation Stages
+
+- [x] Basic UI Frame
+- [x] Simple Text Entry 
+- [x] YouTube Search via Keyword
+- [x] Thumbnail Image Display
+- [x] Refresh Options
+- [x] IFrame Videos attached to YTIDs
+- [x] Flip Action from Image to Video
+- [x] Splash Screen / AppIcon
+- [ ] Internet Connection Check
+- [ ] UI Testing
+
 ## Framework 🔒
 
 Microsoft .NET MAUI (C#/XAML)
