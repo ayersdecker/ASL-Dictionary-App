@@ -14,8 +14,13 @@
             <!-- Action Area -->
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" BackgroundColor="#00333333" Stroke="#80FFFFFF" StrokeThickness="3" VerticalOptions="End" HeightRequest="75">
+        <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#00333333" Stroke="#80FFFFFF" StrokeThickness="3" VerticalOptions="End" HeightRequest="75">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
@@ -29,7 +34,7 @@
             </Grid>
         </Border>
         
-        <RefreshView Grid.Row="1" x:Name="Refresh" Grid.RowSpan="2" Refreshing="Refresh_Refreshing">
+        <RefreshView Grid.Row="1" x:Name="Refresh" Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="Center" Refreshing="Refresh_Refreshing">
             <CollectionView x:Name="ImageCards">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
@@ -47,7 +52,7 @@
                             <Grid HorizontalOptions="Fill">
                                 <Label Text="{Binding Name}" FontSize="Small" Margin="0,0,0,0" FontAttributes="Bold" IsVisible="false"/>
                                 <ImageButton x:Name="ImageButton" HeightRequest="250" CornerRadius="10" Scale=".8" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
-                                <WebView x:Name="WebView" Margin="10,0,0,0" HeightRequest="250" IsVisible="{Binding IsVideo}" Source="{Binding VideoSource}" BackgroundColor="#333"/>
+                                <WebView x:Name="WebView" Margin="10,0,0,0" HeightRequest="250" HorizontalOptions="Center" IsVisible="{Binding IsVideo}" Source="{Binding VideoSource}" BackgroundColor="#333"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
