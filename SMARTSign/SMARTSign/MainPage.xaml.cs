@@ -23,7 +23,6 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         ImageCards.BindingContext = this;   // Binding XAML Elements in CollectionView
-        //LoadCollection();                   // Fills Cards with Img/Videos form Channel
 	}
     /// <summary>
     /// Rebind method for the CollectionView Source
