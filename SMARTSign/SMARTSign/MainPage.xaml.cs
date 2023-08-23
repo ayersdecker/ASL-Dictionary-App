@@ -10,18 +10,20 @@ namespace SMARTSign;
 
 public partial class MainPage : ContentPage
 {
+    // The Flip Card collection to populate
     public ObservableCollection<ImageCardModel> Cards { get; } = new();
+    // YouTube Data V3 BOOR ( Don't Adjust )
     string boor = "AIzaSyA8LXtz0zgcYWJSJJY_iJMXmaCUpRlnyi4";
+    // YouTube Channel ID ( Currently = ASL Dictionary )
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
-    string searchQuery = "Alphabet";
+    // Loading Search Query
+    string searchQuery = "";
 
 	public MainPage()
 	{
         InitializeComponent();
-        ImageCards.BindingContext = this;
-        SearchField.Text = searchQuery;
-        LoadCollection();
-        LoadCardSource();
+        ImageCards.BindingContext = this; // Binding XAML Elements in CollectionView
+        LoadCollection(); // Fills Cards
 	}
 	public void LoadCardSource()
 	{
