@@ -22,19 +22,23 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-        ImageCards.BindingContext = this; // Binding XAML Elements in CollectionView
-        LoadCollection(); // Fills Cards
+        ImageCards.BindingContext = this;   // Binding XAML Elements in CollectionView
+        //LoadCollection();                   // Fills Cards with Img/Videos form Channel
 	}
+    /// <summary>
+    /// Rebind method for the CollectionView Source
+    /// </summary>
 	public void LoadCardSource()
 	{
 		ImageCards.ItemsSource = Cards;
 	}
+    /// <summary>
+    /// Loads 'Cards' based on current form properties
+    /// </summary>
 	private void LoadCollection()
 	{
         Cards.Clear();
         searchQuery = SearchField.Text;
-        //ImageCardModel card = new ImageCardModel("Running", "L-4a6BcpZL8", "running.png", 270, false);
-        //for (int i = 0; i < 10; i++) { Cards.Add(card); }
 
         List<YouTubeInfoModel> videoList = GetVideoIds(boor, channelId, searchQuery);
         foreach (YouTubeInfoModel video in videoList)
@@ -44,23 +48,27 @@ public partial class MainPage : ContentPage
                 ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, true);
                 Cards.Add(card);
             }
-            
         }
     }
-    private void Image_Clicked(object sender, EventArgs e)
-    { 
-        Refresh.IsRefreshing = true;
-        LoadCollection();
-        LoadCardSource();
-        Refresh.IsRefreshing = false;
-    }
+    /// <summary>
+    /// Click action to flip the image to a video
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
 	private void ImageButton_Clicked(object sender, EventArgs e)
 	{
 		ImageButton button = (ImageButton)sender;
 		var context = button.BindingContext as ImageCardModel;
         context.IsImage = false;
-        LoadCardSource();
+        //LoadCardSource();
 	}
+    /// <summary>
+    /// Method to gather video ids from the selected channel via a search query
+    /// </summary>
+    /// <param name="apiKey"></param>
+    /// <param name="channelId"></param>
+    /// <param name="searchQuery"></param>
+    /// <returns></returns>
     public static List<YouTubeInfoModel> GetVideoIds(string apiKey, string channelId, string searchQuery = "")
     {
         // Create a YouTube Data API service
@@ -89,17 +97,21 @@ public partial class MainPage : ContentPage
 
         return videoIds;
     }
+    /// <summary>
+    /// Submit action tied to the forward arrow icon
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Submit_Clicked(object sender, EventArgs e)
     {
         LoadCollection();
         LoadCardSource();
     }
-    private void SearchIcon_Clicked(object sender, EventArgs e)
-    {
-        Cards.Clear();
-        ImageCards.ItemsSource = Cards;
-        
-    }
+    /// <summary>
+    /// Offers the ability for the user to refresh the screen (not nessesary)
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Refresh_Refreshing(object sender, EventArgs e)
     {
         LoadCollection();

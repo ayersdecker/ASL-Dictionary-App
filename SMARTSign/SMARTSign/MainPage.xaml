@@ -11,8 +11,6 @@
             <RowDefinition Height="90"/>
             <!-- Content Area -->
             <RowDefinition/>
-            <!-- Action Area -->
-            <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -33,22 +31,22 @@
                 <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
-        
-        <RefreshView Grid.Row="1" x:Name="Refresh" Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="Center" Refreshing="Refresh_Refreshing">
+
+        <RefreshView Grid.Row="1" x:Name="Refresh" Grid.Column="1" HorizontalOptions="Center" Refreshing="Refresh_Refreshing">
             <CollectionView x:Name="ImageCards">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
                         <Image Source="image" Scale=".5" Opacity=".8"/>
                         <Label Text="Search a term and photos will appear here," HorizontalOptions="Center"/>
                         <Label Text="then click a photo to see the ASL Sign" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:ImageCardModel">
-                    <Border Stroke="#80333333" BackgroundColor="#00000000" Margin="0" HorizontalOptions="Center">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="5"/>
-                        </Border.StrokeShape>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ImageCardModel">
+                        <Border Stroke="#80333333" BackgroundColor="#00000000" Margin="0" HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
                             <Grid HorizontalOptions="Fill">
                                 <Label Text="{Binding Name}" FontSize="Small" Margin="0,0,0,0" FontAttributes="Bold" IsVisible="false"/>
                                 <ImageButton x:Name="ImageButton" HeightRequest="250" CornerRadius="10" Scale=".8" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
@@ -59,20 +57,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-
-        <Border Grid.Row="2" IsVisible="false" BackgroundColor="#333333" Stroke="#80FFFFFF" VerticalOptions="Start" HeightRequest="75" StrokeThickness="3" x:Name="SearchBar">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10"/>
-            </Border.StrokeShape>
-            <Grid Margin="20,10" HorizontalOptions="Fill">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="50"/>
-                </Grid.ColumnDefinitions>
-                <Entry x:Name="Search" FontAttributes="Bold" FontSize="Medium" TextColor="#ddd"/>
-                <ImageButton x:Name="Submit" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
-            </Grid>
-        </Border>
         
     </Grid>
 </ContentPage>
