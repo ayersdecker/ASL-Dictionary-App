@@ -26,10 +26,10 @@
             <Grid Margin="20,10" HorizontalOptions="Fill">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="75"/>
                 </Grid.ColumnDefinitions>
-                <Entry x:Name="SearchField" FontAttributes="Bold" FontSize="Medium" TextColor="#ddd"/>
-                <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
+                <Entry x:Name="SearchField" FontAttributes="Bold" FontSize="Medium" TextColor="#ddd" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="True" IsSpellCheckEnabled="True" ReturnType="Search" Completed="Submit_Clicked"/>
+                <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" WidthRequest="125" HeightRequest="100" Margin="5,0,0,0" Scale=".3" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
         
@@ -50,8 +50,8 @@
                                 <RoundRectangle CornerRadius="5"/>
                             </Border.StrokeShape>
                             <Grid HorizontalOptions="Fill">
-                                <Label Text="{Binding Name}" FontSize="Small" Margin="0,0,0,0" FontAttributes="Bold" IsVisible="false"/>
-                                <ImageButton x:Name="ImageButton" HeightRequest="250" CornerRadius="10" Scale=".8" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
+                                <Label Text="{Binding Name}" HorizontalOptions="Center" FontSize="Small" Margin="0,0,0,0" FontAttributes="Bold" IsVisible="true"/>
+                                <ImageButton x:Name="ImageButton" HeightRequest="250" CornerRadius="10" Scale=".9" Source="{Binding ImageSource}" IsVisible="{Binding IsImage, Mode=OneWay}" Clicked="ImageButton_Clicked"/>
                                 <WebView x:Name="WebView" Margin="10,0,0,0" HeightRequest="250" HorizontalOptions="Center" IsVisible="{Binding IsVideo}" Source="{Binding VideoSource}" BackgroundColor="#333"/>
                             </Grid>
                         </Border>

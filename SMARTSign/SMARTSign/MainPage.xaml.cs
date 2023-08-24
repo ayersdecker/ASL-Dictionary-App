@@ -2,9 +2,12 @@
 using SMARTSign.Models;
 using System;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Core.Platform;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
+using Microsoft.Maui.Platform;
+using KeyboardExtensions = CommunityToolkit.Maui.Core.Platform.KeyboardExtensions;
 
 namespace SMARTSign;
 /// <summary>
@@ -27,7 +30,8 @@ public partial class MainPage : ContentPage
     string channelId = "UCACxqsL_FA-gMD2fwil7ZXA";
     // Loading Search Query
     string searchQuery = "";
-
+    // Token
+    CancellationTokenSource token = new();
 	public MainPage()
 	{
         InitializeComponent();
@@ -110,8 +114,13 @@ public partial class MainPage : ContentPage
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Submit_Clicked(object sender, EventArgs e)
+    private async void Submit_Clicked(object sender, EventArgs e)
     {
+        if(KeyboardExtensions.IsSoftKeyboardShowing(SearchField))
+        {
+            await KeyboardExtensions.HideKeyboardAsync(SearchField, token.Token);
+        }
+        HapticFeedback.Default.Perform(HapticFeedbackType.LongPress);
         LoadCollection();
         LoadCardSource();
     }
@@ -126,5 +135,6 @@ public partial class MainPage : ContentPage
         LoadCardSource();
         Refresh.IsRefreshing = false;
     }
+
 }
 
