@@ -34,8 +34,18 @@ public partial class MainPage : ContentPage
     CancellationTokenSource token = new();
 	public MainPage()
 	{
-        InitializeComponent();
-        ImageCards.BindingContext = this;   // Binding XAML Elements in CollectionView
+        NetworkAccess accessType = Connectivity.Current.NetworkAccess;
+
+        if (accessType == NetworkAccess.Internet)
+        {
+            InitializeComponent();
+            ImageCards.BindingContext = this;   // Binding XAML Elements in CollectionView
+        }
+        else
+        {
+            Navigation.PushAsync(new NoInternetPage(), false);
+        }
+        
 	}
     /// <summary>
     /// Rebind method for the CollectionView Source
@@ -120,9 +130,21 @@ public partial class MainPage : ContentPage
         {
             await KeyboardExtensions.HideKeyboardAsync(SearchField, token.Token);
         }
-        HapticFeedback.Default.Perform(HapticFeedbackType.LongPress);
-        LoadCollection();
-        LoadCardSource();
+
+        NetworkAccess accessType = Connectivity.Current.NetworkAccess;
+
+        if (accessType != NetworkAccess.Internet)
+        {
+            await Navigation.PushAsync(new NoInternetPage(), false);
+        }
+        else
+        {
+            HapticFeedback.Default.Perform(HapticFeedbackType.LongPress);
+            LoadCollection();
+            LoadCardSource();
+
+        }
+        
     }
     /// <summary>
     /// Offers the ability for the user to refresh the screen (not nessesary)
