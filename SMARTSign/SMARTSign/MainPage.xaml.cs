@@ -7,7 +7,16 @@ using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
 namespace SMARTSign;
-
+/// <summary>
+/// 
+/// Production Term: July 2023
+/// Client: Harley Hamilton / Thad Starner
+/// Client Contact: hjh134@gmail.com
+/// Developed at RIT/NTID CAT Lab
+/// Development Team: Decker Ayers
+/// Development Contact: cat@rit.edu
+/// 
+/// </summary>
 public partial class MainPage : ContentPage
 {
     // The Flip Card collection to populate
@@ -44,7 +53,7 @@ public partial class MainPage : ContentPage
         {
             if(Cards.Count < 10)
             {
-                ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, 270, true);
+                ImageCardModel card = new ImageCardModel(video.YTID_Name, video.YTID,video.Image_URL, true);
                 Cards.Add(card);
             }
         }

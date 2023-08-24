@@ -8,10 +8,14 @@ namespace SMARTSign.Models
 {
     public class YouTubeInfoModel
     {
-        public string YTID_Name { get; set; }
-        public string Image_URL { get; set; }
-        public string YTID { get; set; }
 
+        // EXTRACTED Name
+        public string YTID_Name { get; set; }
+        // EXTRACTED Thumbnail URL
+        public string Image_URL { get; set; }
+        // EXTRACTED YouTube Video ID
+        public string YTID { get; set; }
+        // Parameterized Constructor
         public YouTubeInfoModel(string yTID_Name, string image_URL, string yTID)
         {
             YTID_Name = yTID_Name;

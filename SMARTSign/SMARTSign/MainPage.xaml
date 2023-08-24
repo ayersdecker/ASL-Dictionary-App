@@ -7,7 +7,7 @@
 
     <Grid BackgroundColor="#333">
         <Grid.RowDefinitions>
-            <!-- Title Row -->
+            <!-- Search Row -->
             <RowDefinition Height="90"/>
             <!-- Content Area -->
             <RowDefinition/>
@@ -17,7 +17,8 @@
             <ColumnDefinition Width="400"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
+        
+        <!-- Search Bar -->
         <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#00333333" Stroke="#80FFFFFF" StrokeThickness="3" VerticalOptions="End" HeightRequest="75">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
@@ -31,7 +32,8 @@
                 <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" VerticalOptions="Center" Margin="5,0,0,0" Scale=".5" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
-
+        
+        <!-- Content Area -->
         <RefreshView Grid.Row="1" x:Name="Refresh" Grid.Column="1" HorizontalOptions="Center" Refreshing="Refresh_Refreshing">
             <CollectionView x:Name="ImageCards">
                 <CollectionView.EmptyView>
