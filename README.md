@@ -24,7 +24,7 @@ The new application aims to replicate the work done on the original site along w
 - [x] IFrame Videos attached to YTIDs
 - [x] Flip Action from Image to Video
 - [x] Splash Screen / AppIcon
-- [ ] Internet Connection Check
+- [x] Internet Connection Check
 - [ ] UI Testing
 
 ## Framework 🔒
