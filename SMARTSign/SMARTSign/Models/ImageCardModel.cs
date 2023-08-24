@@ -15,7 +15,7 @@ namespace SMARTSign.Models
         // Card Flip Property
         private bool isImage;
         // Captializes Name
-        public string Name { get { return name; } set { name = char.ToUpper(value[0]) + value.Substring(1); }}
+        public string Name { get { return name; } set { if (value.Length > 40) { name = char.ToUpper(value[0]) + value.Substring(1, 39) + "..."; } else { name = char.ToUpper(value[0]) + value.Substring(1); } } }
         // YouTube Video ID
         public string YTID { get; set; }
         // Source for the YouTube Video Thumbnail
