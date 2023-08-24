@@ -3,11 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SMARTSign.NoInternetPage"
              Title="NoInternetPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout Background="#333">
         <Label 
             Text="No Internet Access Found"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="Retry Connection" Clicked="Button_Clicked"/>
+            Margin="0,50,0,50"
+            HorizontalOptions="Center"
+            FontSize="Medium"
+            FontAttributes="Bold"/>
+        <ActivityIndicator Color="White" IsRunning="True"/>
+        <Button Margin="0,50,0,10" 
+                Text="Retry Connection" 
+                BackgroundColor="#333"
+                BorderColor="White" 
+                BorderWidth="1" 
+                VerticalOptions="Center" 
+                WidthRequest="200"
+                TextColor="White"
+                Clicked="Button_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

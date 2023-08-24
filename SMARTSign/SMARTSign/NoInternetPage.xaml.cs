@@ -7,6 +7,7 @@ public partial class NoInternetPage : ContentPage
 		InitializeComponent();
 	}
 
+    // Checks if Internet has been Detected
     private void Button_Clicked(object sender, EventArgs e)
     {
         NetworkAccess accessType = Connectivity.Current.NetworkAccess;

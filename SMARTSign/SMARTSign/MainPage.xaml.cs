@@ -34,8 +34,8 @@ public partial class MainPage : ContentPage
     CancellationTokenSource token = new();
 	public MainPage()
 	{
+        // Checks if Internet is Connected or Not
         NetworkAccess accessType = Connectivity.Current.NetworkAccess;
-
         if (accessType == NetworkAccess.Internet)
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ public partial class MainPage : ContentPage
         }
         else
         {
-            Navigation.PushAsync(new NoInternetPage(), false);
+            Navigation.PushAsync(new NoInternetPage(), false); // Navigates to No Internet Page
         }
         
 	}
