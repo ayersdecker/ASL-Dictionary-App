@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         
         <!-- Search Bar -->
-        <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#00333333" Stroke="#80FFFFFF" StrokeThickness="3" VerticalOptions="End" HeightRequest="75">
+        <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#00333333" Stroke="#80FFFFFF" StrokeThickness="4" VerticalOptions="End" HeightRequest="75">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
@@ -28,8 +28,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="75"/>
                 </Grid.ColumnDefinitions>
-                <Entry x:Name="SearchField" FontAttributes="Bold" FontSize="Medium" TextColor="#ddd" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="True" IsSpellCheckEnabled="True" ReturnType="Search" Completed="Submit_Clicked"/>
-                <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" WidthRequest="125" HeightRequest="100" Margin="5,0,0,0" Scale=".3" Opacity=".8" Clicked="Submit_Clicked"/>
+                <Entry x:Name="SearchField" FontAttributes="Bold" Placeholder="Type Your Word Here" FontSize="Title" TextColor="#ddd" ClearButtonVisibility="WhileEditing" IsTextPredictionEnabled="True" IsSpellCheckEnabled="True" ReturnType="Search" Completed="Submit_Clicked"/>
+                <ImageButton x:Name="SubmitButton" Source="arrow" Grid.Column="1" Margin="5,0,0,0" Scale=".6" Opacity=".8" Clicked="Submit_Clicked"/>
             </Grid>
         </Border>
         
