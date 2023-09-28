@@ -38,7 +38,7 @@
             <CollectionView x:Name="ImageCards">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout HorizontalOptions="Center" Margin="0,100,0,0">
-                        <Image Source="image" Scale=".5" Opacity=".8"/>
+                        <Image Source="image" Scale=".5" Opacity=".8" />
                         <Label Text="Search a term and photos will appear here," HorizontalOptions="Center"/>
                         <Label Text="then click a photo to see the ASL Sign" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
