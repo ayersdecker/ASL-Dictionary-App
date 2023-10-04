@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>SMARTSign</ApplicationTitle>
+		<ApplicationTitle>ASL Dictionary</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.smartsign</ApplicationId>
+		<ApplicationId>com.companyname.asldictionary</ApplicationId>
 		<ApplicationIdGuid>e826d359-3d0c-4a14-a485-22d10668e490</ApplicationIdGuid>
 
 		<!-- Versions -->
