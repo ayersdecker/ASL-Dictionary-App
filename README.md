@@ -1,4 +1,4 @@
-# SMARTSign Mobile Application
+# ASL Dictionary Mobile Application
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![Visual Studio](https://img.shields.io/badge/--6C33AF?logo=visual%20studio)](https://visualstudio.microsoft.com/)
 [![.NET](https://img.shields.io/badge/--512BD4?logo=.net&logoColor=ffffff)](https://dotnet.microsoft.com/)
@@ -25,7 +25,7 @@ The new application aims to replicate the work done on the original site along w
 - [x] Flip Action from Image to Video
 - [x] Splash Screen / AppIcon
 - [x] Internet Connection Check
-- [ ] UI Testing
+- [x] UI Testing
 
 ## Framework 🔒
 
@@ -40,4 +40,4 @@ Microsoft .NET MAUI (C#/XAML)
 
 ## Development Contact 📫
 
-> cat@rit.edu
+> ayersdecker@gmail.com
